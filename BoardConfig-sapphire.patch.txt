@@ -1,0 +1,18 @@
+# Cambios en device/xiaomi/sapphire/BoardConfig.mk
+# FASE 1: Image desde fuente, DTB/DTBO y modulos siguen prebuilt.
+
+- TARGET_FORCE_PREBUILT_KERNEL := true
+- TARGET_NO_KERNEL_OVERRIDE := true
+- TARGET_PREBUILT_KERNEL := $(KERNEL_PATH)/kernel
+- TARGET_KERNEL_SOURCE := $(KERNEL_PATH)/kernel-headers
+- PRODUCT_COPY_FILES += $(TARGET_PREBUILT_KERNEL):kernel
+
++ TARGET_KERNEL_SOURCE := kernel/xiaomi/sapphire
++ TARGET_KERNEL_CONFIG := sapphire_defconfig
++ TARGET_KERNEL_CLANG_COMPILE := true
++ TARGET_KERNEL_LLVM_BINUTILS := true
+
+# SE MANTIENEN sin tocar (siguen prebuilt en fase 1):
+#   BOARD_PREBUILT_DTBIMAGE_DIR := $(KERNEL_PATH)/dtbs
+#   BOARD_PREBUILT_DTBOIMAGE    := $(KERNEL_PATH)/dtbs/dtbo.img
+#   BOARD_VENDOR_KERNEL_MODULES_LOAD / BLOCKLIST y todo el bloque de modulos

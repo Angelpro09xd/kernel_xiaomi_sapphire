@@ -168,3 +168,5 @@ sphinx_*/
 # Backup files
 *.orig
 *.bak
+# build output
+/out/
